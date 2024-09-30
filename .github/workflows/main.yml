@@ -1,0 +1,40 @@
+name: Main build
+
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+
+        - name: Setup Node
+          uses: actions/setup-node@v1
+          with:
+            node-version: '18.x'
+
+        - name: Run install
+          uses: borales/actions-yarn@v4
+          with:
+            cmd: install # will run `yarn install` command
+
+        - run: yarn check
+
+        - run: yarn build
+
+        - shell: bash
+          name: Fix build output
+          run: |
+            find "out" -type f -exec sed -i 's#"/_next/#"./_next/#g' {} +
+            cp LICENSE out/
+            cp README.md out/
+
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./out
