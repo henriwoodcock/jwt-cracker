@@ -31,7 +31,6 @@ jobs:
           run: |
             find "out" -type f -exec sed -i 's#"/_next/#"./_next/#g' {} +
             cp LICENSE out/
-            cp README.md out/
 
         - name: Deploy
           uses: peaceiris/actions-gh-pages@v3
