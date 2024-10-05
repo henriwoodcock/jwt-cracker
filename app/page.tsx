@@ -70,12 +70,13 @@ export default function Home() {
                     </div>
                 </div>
             </main>
-            <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-              <div className="flex items-center gap-2 hover:underline hover:underline-offset-4">
-                  <p className="leading-7">Built by&nbsp;</p>
-                  <a href="https://twitter.com/henriwoodcock" className="underline">
-                    Henri Woodcock
-                  </a>
+            <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center bg-muted/40">
+              <div className="flex items-center gap-2">
+                  <p className="leading-7">Built while drinking 🍺 by&nbsp;
+                    <a href="https://twitter.com/henriwoodcock" className="underline">
+                        Henri Woodcock
+                    </a>
+                  </p>
               </div>
             </footer>
         </div>
